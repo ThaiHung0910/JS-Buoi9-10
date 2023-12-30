@@ -168,11 +168,12 @@ function searchStaff(rank) {
       isFound = true
     }
   }
-
+  
   if(isFound) {
     showStaff(searchList)
   } else {
     alert('Không tìm thấy kết quả ! Vui lòng thử lại.')
+    showStaff()
   }
 }
 
