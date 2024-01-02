@@ -4,7 +4,7 @@ const btnCapNhat = document.getElementById("btnCapNhat")
 const formStaff = document.getElementById("form__staff")
 const accountStaff = document.getElementById("tknv")
 
-function getValueStaff() {
+function getValueStaff(action) {
   var newStaff = new Staff();
   var isValid = true;
   var arrInput = document.querySelectorAll("form input, form select");
@@ -18,7 +18,7 @@ function getValueStaff() {
       case "tknv":
         isValid &=
           checkEmptyValue(inputValue, errorId) &&
-          checkAccount(inputValue, 4, 6, errorId);
+          checkAccount(inputValue, 4, 6, errorId) && checkDuplicate(inputValue, arrStaffList, "tknv", errorId, action)
         break;
       case "name":
         isValid &=
@@ -72,7 +72,6 @@ function showStaff(arr = arrStaffList) {
     var newArr = arr[i];
     var newArrStaffList = new Staff();
     newArr = Object.assign(newArrStaffList, newArr);
-    console.log(newArr)
     content += `
     <tr>
       <th>
@@ -144,7 +143,7 @@ function editStaff(tknv) {
 }
 
 function updateStaff() {
-  var staff = getValueStaff();
+  var staff = getValueStaff("capnhat");
 
   for (var i = 0; i < arrStaffList.length; i++) {
     if (arrStaffList[i].tknv == staff.tknv) {
@@ -194,7 +193,7 @@ btnThemNV.addEventListener("click", function () {
   // var newStaff = new Staff();
   // var arrList = document.querySelectorAll("form input, form select");
   // var staff = getValueStaff(newStaff, arrList)
-  var staff = getValueStaff();
+  var staff = getValueStaff("them");
   if (staff) {
     arrStaffList.push(staff);
 
@@ -213,6 +212,6 @@ btnCapNhat.addEventListener("click", function () {
 
 
 document.getElementById('btnTimNV').addEventListener("click", function() {
-  var searchName = document.getElementById('searchName').value
+  var searchName = document.getElementById('searchName').value.trim()
   searchStaff(searchName)
 })
