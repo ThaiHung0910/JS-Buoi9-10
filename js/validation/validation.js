@@ -8,7 +8,7 @@ var message = [
   "Vui lòng nhập đúng định dạng email",
   "Vui lòng nhập đúng định dạng tháng/ngày/năm",
   "Vui lòng chỉ nhập số",
-  "Tài khoản đã được sử dụng. Vui lòng thử lại",
+  "Tên tài khoản đã được sử dụng. Hãy thử tên khác",
 ];
 
 function checkEmptyValue(value, errorId) {
