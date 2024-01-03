@@ -3,6 +3,7 @@ const btnThemNV = document.getElementById('btnThemNV')
 const btnCapNhat = document.getElementById("btnCapNhat")
 const formStaff = document.getElementById("form__staff")
 const accountStaff = document.getElementById("tknv")
+const headerTitle = document.getElementById("header-title")
 
 function getValueStaff(action) {
   var newStaff = new Staff();
@@ -70,8 +71,8 @@ function showStaff(arr = arrStaffList) {
   var content = "";
   for (var i = 0; i < arr.length; i++) {
     var newArr = arr[i];
-    var newArrStaffList = new Staff();
-    newArr = Object.assign(newArrStaffList, newArr);
+    // var newArrStaffList = new Staff();
+    // newArr = Object.assign(newArrStaffList, newArr);
     content += `
     <tr>
       <th>
@@ -81,8 +82,8 @@ function showStaff(arr = arrStaffList) {
       <th>${newArr.email}</th>
       <th>${newArr.datepicker}</th>
       <th>${newArr.chucvu}</th>
-      <th>${newArr.caculateSalary(newArr.chucvu)}</th>
-      <th>${newArr.rankStaff(newArr.gioLam)}</th>
+      <th>${newArr.tongLuong}</th>
+      <th>${newArr.loai}</th>
       <th>
        <button data-toggle="modal"
        data-target="#myModal" onclick="editStaff('${
@@ -140,6 +141,7 @@ function editStaff(tknv) {
   accountStaff.readOnly = true;
   btnThemNV.style.display = "none"
   btnCapNhat.style.display = "block"
+  headerTitle.innerHTML = "Update"
 }
 
 function updateStaff() {
@@ -183,6 +185,7 @@ function searchStaff(rank) {
 
 
 document.getElementById('btnThem').addEventListener("click", function() {
+  headerTitle.innerHTML = "Log In"
   btnThemNV.style.display = "block"
   btnCapNhat.style.display = "none"
   accountStaff.readOnly = false;

@@ -8,7 +8,7 @@ function Staff() {
   this.chucvu = '';
   this.gioLam = 0;
   this.tongLuong = 0
-  
+  this.loai = ""
 
   this.caculateSalary = function (type) {
     switch (type) {
@@ -20,7 +20,7 @@ function Staff() {
         return this.luongCB;
     }
   };
-  this.loai = "" 
+   
 
   this.rankStaff = function (timeWork) {
     var result = "";
